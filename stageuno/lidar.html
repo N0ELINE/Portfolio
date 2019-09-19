@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>Tuto Rigolo - Portfolio Nöeline Husson Miet</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="assets/img/LOGO.png">
+	<meta name="author" content="Nöeline Husson Miet">
+	<meta name="description" content="Portfolio Nöeline Husson Miet BTS SIO SLAM">
+
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/flexslider.css">
+	<link rel="stylesheet" href="assets/css/animsition.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="assets/css/owl.theme.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+</head>
+
+<body class="animsition">
+	<span class="frame-line top-frame visible-lg"></span>
+	<span class="frame-line right-frame visible-lg"></span>
+	<span class="frame-line bottom-frame visible-lg"></span>
+	<span class="frame-line left-frame visible-lg"></span>
+	<header class="main-header">
+		<div class="container-fluid">
+			<div class="box-header">
+				<div class="box-logo">
+					<a href="../index.html"><img src="assets/img/logo.png" width="50" alt="Logo"></a>
+				</div>	
+			</div>
+	</header>
+
+	
+
+
+	<section class="project_descr">
+		<div class="container mt-100">
+			<div class="row center">
+			<div class="col-md-8 col-md-offset-2 col-sm-12">
+				<div class="section-title">
+					<p></br></br></p>
+					<h2 class="mb-50">PROJET R2S ROBOTCICS</h2>
+					<p class="module-subtitle">R2S ROBOTICS propose des solutions informatisées pour les appareils de forage dans l'industrie minière et la construction de tunnels. Ils souhaitent un logiciel de scan 3D qui sera capable d’estimer le volume vide total ainsi que le volume de roche retiré grâce à une opération de forage. Ils ont d’autres perspectives d’évolution avec ce logiciel comme évaluer la distance entre l’appareil et le point de forage. Au final, l’ensemble permettra l’optimisation de la vitesse de forage, la diminution des coûts et une augmentation de la sécurité du personnel.</p>
+				</div>
+			</div>
+			</div>
+
+
+
+
+			<div class="row mt-50">
+				<div class="col-md-9 wow fadeInUp">
+					<p>	<a style="color:#ea92fc" href="https://noelinemiet.files.wordpress.com/2019/09/rapport-de-stage-bts-sio1.docx">RAPPORT DE STAGE</a></p>
+					<p> <a style="color:#ea92fc" href="intro.html" align="center">INTRODUCTION DU STAGE</a></br> </p>
+
+
+					<h3>ANALYSE DU BESOIN ET DE L'EXISTANT</h3>
+					<p> </br> <img src="assets/img/mrs1000.png" class="img-responsive" width="60%" align="center"> </br></p>
+					<p>InnoduraTB a choisi d’utiliser le capteur MRS1000 de chez SICK. Cet appareil émet des faisceaux lasers et en reçoit l'écho permettant de déterminer la distance d'un objet. Le lidar scanne à 270 sur 4 plans à une résolution de 0.25 degrés. Cet appareil est particulièrement intéressant puisqu’il permet un scan quasiment instantané sur 4 plans et est efficace même à travers la poussière. Pour scanner entièrement les tunnels, InnoduraTB prévoit un mécanisme pour pencher le lidar.</br></p>
+					<p>Le logiciel est l’interface de communication entre l’utilisateur et le capteur. Il doit permettre :
+					<ul>
+						<li>La connexion au lidar,</li>
+						<li>L’acquisition des données du lidar,</li>
+						<li>Le choix du chemin d’enregistrement par l’utilisateur,</li>
+						<li>L’affichage d’un  pop up si le chemin d’accès est vide lors de l’enregistrement,</li>
+						<li>Le choix de l’angle par l’utilisateur,</li>
+						<li>L’affichage des données en temps réel selon x, y et z,</li>
+						<li>L’affichage d’un pop up si l’angle est vide lors de la concaténation,</li>
+						<li>La prise en compte de l’angle du Lidar ainsi que l’angle des 4 nappes,</li>
+						<li>L’enregistrement des données dans un ficher sous forme de tableau, </li>
+						<li>La génération d’un nom de fichier unique et automatique,</li>
+						<li>La concaténation des différentes données contenus dans les différents fichiers de scans d’un dossier,</li>
+						<li>La projection des données des différents fichiers de scans concaténées,</li>
+						<li>La fermeture complète du programme.</li>
+					</ul>
+
+
+					<h3>PROGRAMMATION</h3>
+					<p> </br> <img src="assets/img/faceavant.png" class="img-responsive"  width="60%" align="center"> </p>
+					<p>En LabView, il faut commencer par construire la face avant pour déterminer les entrées sorties.</p>
+					<p>L’ingénieur avec qui je travaillais m’a indiqué qu’il fallait que je mette en place plusieurs boucles dans le programme principal :
+					<ul><li>Une boucle Evènement qui gérera l’appui sur les 3 boutons et enverra des messages à la boucle interface utilisateur (Ui) pour les boutons Sauvegarder et concaténer, ainsi qu’aux autres boucles pour le bouton quitter,</li>
+					<li>Une boucle Ui Qui permettra de sauvegarder et de concaténer les nuages de points. Elle enverra un message à la boucle Affichage pour l’affichage des nuages concaténés,
+					Une boucle Acquisition qui est chargée de la connexion au Lidar et de l'acquisition de ses données. Elle enverra un message à la boucle Affichage pour l’affichage du nuage en temps réel,</li>
+					<li>Une boucle Affichage pour afficher le nuage de point en temps réel et ainsi que le concaténé.</li>
+					</ul></p>
+
+					<h3>ADAPTATION ET TEST AVEC LIDAR A UN FAISSEAU</h3>
+					<p> </br> <img src="assets/img/lidar1n.png" class="img-responsive"  width="60%" align="center"> </p>
+					<p>Je souhaitais tester mon code, un ingénieur de chez InnoduraTB m’a proposé d’utiliser un Lidar à 1 nappe. J’ai donc dû adapter mon code au procédé de ce nouveau lidar. Une fois le code conforme au mode d’acquisition de ce nouveau Lidar, j’ai pu tester quelques fonctionnalités. Toutes les fonctionnalités ne nécessitant pas le MRS1000 ou des fonctionnalités non codées étaient fonctionnelles.</p>
+
+					<h3>TRANSMISSION DES INFORMATIONS</h3>
+					<p>Pour que le projet puisse continuer dans de bonnes conditions après mon départ, j’ai expliqué mon code à la personne le reprenant. Je lui ai expliqué le fonctionnement global, ma méthode d’approche du sujet. Aller dans le détail n’était pas nécessaire puisque cela nous aurait fait perdre du temps. En effet, le code est très commenté. Je lui ai également remis le dossier technique détaillant chaque partie de chaque sous VI. </br></p>
+
+				</div>
+
+
+
+				<div class="col-md-3 wow fadeInUp" data-wow-delay=".1s">
+					<ul class="project_list">
+						<ul class="project_list">
+						<li>A1.1.1 Analyse du cahier des charges d'un service à produire</li>
+						<li>A1.1.3 Étude des exigences liées à la qualité attendue d'un service</li>
+						<li>A1.2.4 Détermination des tests nécessaires à la validation d'un service</li>
+						<li>A1.3.1 Test d'intégration et d'acceptation d'un service</li>
+						<li>A1.4.1 Participation à un projete</li>
+						<li>A1.4.3 Gestion des ressources</li>
+						<li>A4.1.2 Conception ou adaptation de l'interface utilisateur d'une solution applicative</li>
+						<li>A4.1.7 Développement, utilisation ou adaptation de composants logiciels</li>
+						<li>A4.1.8 Réalisation des tests nécessaires à la validation d'éléments adaptés ou développés</li>
+						<li>A4.1.9 Rédaction d'une documentation technique</li>
+						<li>A4.1.1 Rédaction d'une documentation d'utilisation</li>
+						<li>A5.2.3 Repérage des compléments de formation ou d'auto-formation utiles à l'acquisition de nouvelles compétences</li>
+						<li>A5.2.4 Étude d‘une technologie, d'un composant, d'un outil ou d'une méthode</li>
+					</ul>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+		<div id="facts" class="facts mt-100 mbr-box mbr-section mbr-section--relative">
+			<div class="container">
+				<div class="row center">
+					<div class="col-md-8 col-md-offset-2"><h2 class="mb-100"></br></h2></div>
+				</div>
+			</div>
+		</div>
+
+	<footer class="main-footer">
+		<svg preserveAspectRatio="none" viewBox="0 0 100 102" height="100" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="yellow">
+			<path d="M0 0 L50 100 L100 0 Z" fill="#ffeedb" stroke="#ffeedb"></path>
+		</svg>
+            <div class="container">
+                <div class="row mt-100 mb-50 footer-widgets">
+
+                <div class="copyright-section">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12"> 
+                            <p>&copy; 2019 - All Rights Reserved <a href="#">Nöeline Husson Miet</a> </p>
+                        </div><!-- .col-md-6 -->
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        	<p style="text-align:right">
+                            Email: <a href="mailto:noeline.miet@gmail.com" >noeline.miet@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+           		</div>
+            </div>
+	</footer>
+
+	<script type="text/javascript" src="assets/js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="assets/js/animated-headline.js"></script>
+	<script type="text/javascript" src="assets/js/menu.js"></script>
+	<script type="text/javascript" src="assets/js/modernizr.js"></script>
+	<script type="text/javascript" src="assets/js/isotope.pkgd.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.animsition.min.js"></script>
+	<script type="text/javascript" src="assets/js/init.js"></script>
+	<script type="text/javascript" src="assets/js/main.js"></script>
+	<script type="text/javascript" src="assets/js/smooth-scroll.js"></script>
+	<script type="text/javascript" src="assets/js/numscroller.js"></script>
+	<script type="text/javascript" src="assets/js/wow.min.js"></script>
+	<script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+
+	<script type="text/javascript">
+		$(window).load(function() {
+			new WOW().init();
+
+			// initialise flexslider
+			$('.flexslider').flexslider({
+				animation: "fade",
+				directionNav: true,
+				controlNav: false,
+				keyboardNav: true,
+				slideToStart: 0,
+				animationLoop: true,
+				pauseOnHover: false,
+				slideshowSpeed: 4000,
+			});
+
+			smoothScroll.init();
+
+			// initialize isotope
+			var $container = $('.portfolio_container');
+			$container.isotope({
+				filter: '*',
+			});
+
+			$('.portfolio_filter a').click(function(){
+				$('.portfolio_filter .active').removeClass('active');
+				$(this).addClass('active');
+
+				var selector = $(this).attr('data-filter');
+				$container.isotope({
+					filter: selector,
+					animationOptions: {
+						duration: 500,
+						animationEngine : "jquery"
+					}
+				});
+				return false;
+			});
+		});
+	</script>
+</body>
+</html>
